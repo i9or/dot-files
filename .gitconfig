@@ -1,0 +1,34 @@
+[color]
+	ui = true
+[user]
+	email = 80776287+i9or@users.noreply.github.com
+	name = Igor
+	signingKey = xxxxxxxxxxxxxxxx
+[core]
+	editor = vi
+[push]
+	default = simple
+[alias]
+	aa = "!git add -A && git ss"
+	c = commit
+	cm = commit -m
+	s = status
+	ss = status --short --branch
+	d = diff
+	ds = diff --staged
+	ru = remote update --prune
+	ph = push origin HEAD
+	p = push
+	lg = log --pretty=oneline --graph --abbrev-commit
+	cb = checkout -b
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge --skip -- %f
+	process = git-lfs filter-process --skip
+	required = true
+[commit]
+	gpgSign = true
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
