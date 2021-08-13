@@ -26,6 +26,10 @@ Plug 'tpope/vim-commentary'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-endwise'
+Plug 'mattn/emmet-vim'
+Plug 'andrejlevkovitch/vim-lua-format'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'cdelledonne/vim-cmake'
 
 call plug#end()
 
@@ -59,7 +63,7 @@ set autoindent
 autocmd Filetype go setlocal noexpandtab
 autocmd Filetype go setlocal tabstop=4 shiftwidth=4
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4
-
+autocmd Filetype lua setlocal tabstop=4 shiftwidth=4
 set magic
 
 set guioptions-=m
@@ -74,7 +78,7 @@ if has ("gui_running")
   set macligatures
 endif
 
-set guifont=IosevkaNerdFontComplete-Light:h18
+set guifont=FiraCodeNerdFontComplete-Light:h16
 
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -95,8 +99,9 @@ let g:coc_global_extensions = [
     \ 'coc-prettier',
     \ 'coc-python',
     \ 'coc-elixir',
-    \ 'coc-highlight',
-    \ 'coc-go'
+    \ 'coc-clangd',
+    \ 'coc-go',
+    \ 'coc-ember'
   \ ]
 
 set hidden
@@ -143,6 +148,12 @@ nmap <leader>rn <Plug>(coc-rename)
 
 command! -nargs=0 Format :call CocAction('format')
 
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+
+let g:coc_filetype_map = {
+      \ 'html.handlebars': 'html',
+      \ }
+
 " gitgutter settings
 let g:gitgutter_realtime=1
 let g:gitgutter_eager=1
@@ -150,6 +161,7 @@ set updatetime=300
 
 " Delimitmate settings
 let delimitMate_expand_cr=1
+let delimitMate_jump_expansion=1
 
 " vim-airline settings
 let g:airline_theme='palenight'
@@ -174,23 +186,31 @@ let NERDTreeShowHidden=1
 map <C-p> :GFiles<CR>
 
 " Vim Go settings
-let g:go_diagnostics_enabled = 0
-let g:go_metalinter_enabled = []
-let g:go_jump_to_error = 0
-let g:go_fmt_command = "goimports"
-let g:go_auto_sameids = 0
+let g:go_diagnostics_enabled=0
+let g:go_metalinter_enabled=[]
+let g:go_jump_to_error=0
+let g:go_fmt_command="goimports"
+let g:go_auto_sameids=0
 
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_generate_tags = 1
+let g:go_highlight_types=1
+let g:go_highlight_fields=1
+let g:go_highlight_functions=1
+let g:go_highlight_function_calls=1
+let g:go_highlight_operators=1
+let g:go_highlight_extra_types=1
+let g:go_highlight_build_constraints=1
+let g:go_highlight_generate_tags=1
 
 " Palenight settings
 let g:palenight_terminal_italics=1
 if (has("termguicolors"))
   set termguicolors
 endif
+
+" Lua Format settings
+autocmd BufWrite *.lua call LuaFormat()
+
+" Vim Cmake settings
+let g:cmake_link_compile_commands=1
+nmap <leader>cg :CMakeGenerate<cr>
+nmap <leader>cb :CMakeBuild<cr>
