@@ -6,14 +6,12 @@ syntax enable
 call plug#begin('~/.vim/plugged')
 
 Plug 'drewtempelmeyer/palenight.vim'
-Plug 'tpope/vim-dadbod'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-surround'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'Raimondi/delimitMate'
-Plug 'tpope/vim-eunuch'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -23,13 +21,14 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-commentary'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-endwise'
-Plug 'mattn/emmet-vim'
 Plug 'andrejlevkovitch/vim-lua-format'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'cdelledonne/vim-cmake'
+Plug 'preservim/tagbar'
+Plug 'ervandew/supertab'
+Plug 'AndrewRadev/splitjoin.vim'
 
 call plug#end()
 
@@ -88,71 +87,7 @@ noremap <Right> <NOP>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-" coc.nvim settings
-let g:coc_global_extensions = [
-    \ 'coc-tsserver',
-    \ 'coc-json',
-    \ 'coc-html',
-    \ 'coc-css',
-    \ 'coc-styled-components',
-    \ 'coc-eslint',
-    \ 'coc-prettier',
-    \ 'coc-python',
-    \ 'coc-elixir',
-    \ 'coc-clangd',
-    \ 'coc-go',
-    \ 'coc-ember'
-  \ ]
-
-set hidden
-set nobackup
-set nowritebackup
-set cmdheight=2
-set shortmess+=c
-set signcolumn=yes
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-nmap <leader>rn <Plug>(coc-rename)
-
-command! -nargs=0 Format :call CocAction('format')
-
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-
-let g:coc_filetype_map = {
-      \ 'html.handlebars': 'html',
-      \ }
+let mapleader = ","
 
 " gitgutter settings
 let g:gitgutter_realtime=1
@@ -182,15 +117,17 @@ map <silent> <F2> :call ToggleFileExplorer()<CR>
 let NERDTreeMinimalUI=1
 let NERDTreeShowHidden=1
 
-" FZF settings
-map <C-p> :GFiles<CR>
-
 " Vim Go settings
-let g:go_diagnostics_enabled=0
-let g:go_metalinter_enabled=[]
-let g:go_jump_to_error=0
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
+
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+
+let g:go_list_type="quickfix"
 let g:go_fmt_command="goimports"
-let g:go_auto_sameids=0
+let g:go_auto_sameids=1
 
 let g:go_highlight_types=1
 let g:go_highlight_fields=1
@@ -207,10 +144,13 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-" Lua Format settings
-autocmd BufWrite *.lua call LuaFormat()
-
 " Vim Cmake settings
-let g:cmake_link_compile_commands=1
 nmap <leader>cg :CMakeGenerate<cr>
 nmap <leader>cb :CMakeBuild<cr>
+
+" Tagbar settings
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_autofocus=1
+
+" Lua Format settings
+autocmd BufWrite *.lua call LuaFormat()
