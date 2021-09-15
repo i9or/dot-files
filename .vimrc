@@ -29,6 +29,7 @@ Plug 'cdelledonne/vim-cmake'
 Plug 'preservim/tagbar'
 Plug 'ervandew/supertab'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'ludovicchabant/vim-gutentags'
 
 call plug#end()
 
@@ -77,7 +78,7 @@ if has ("gui_running")
   set macligatures
 endif
 
-set guifont=FiraCodeNerdFontComplete-Light:h16
+set guifont=FiraCodeNerdFontComplete-Light:h18
 
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -86,6 +87,9 @@ noremap <Right> <NOP>
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+inoremap <S-CR> <Esc>o
+inoremap <C-S-CR> <Esc>O
 
 let mapleader = ","
 
@@ -147,6 +151,7 @@ endif
 " Vim Cmake settings
 nmap <leader>cg :CMakeGenerate<cr>
 nmap <leader>cb :CMakeBuild<cr>
+let g:cmake_build_dir_location='./build'
 
 " Tagbar settings
 nmap <F8> :TagbarToggle<CR>
@@ -154,3 +159,52 @@ let g:tagbar_autofocus=1
 
 " Lua Format settings
 autocmd BufWrite *.lua call LuaFormat()
+
+" Gutentags settings
+let g:gutentags_ctags_exclude = [
+      \ '*.git', '*.svg', '*.hg',
+      \ '*/tests/*',
+      \ 'build',
+      \ 'dist',
+      \ '*sites/*/files/*',
+      \ 'bin',
+      \ 'node_modules',
+      \ 'bower_components',
+      \ 'cache',
+      \ 'compiled',
+      \ 'docs',
+      \ 'example',
+      \ 'bundle',
+      \ 'vendor',
+      \ '*.md',
+      \ '*-lock.json',
+      \ '*.lock',
+      \ '*bundle*.js',
+      \ '*build*.js',
+      \ '.*rc*',
+      \ '*.json',
+      \ '*.min.*',
+      \ '*.map',
+      \ '*.bak',
+      \ '*.zip',
+      \ '*.pyc',
+      \ '*.class',
+      \ '*.sln',
+      \ '*.Master',
+      \ '*.csproj',
+      \ '*.tmp',
+      \ '*.csproj.user',
+      \ '*.cache',
+      \ '*.pdb',
+      \ 'tags*',
+      \ 'cscope.*',
+      \ '*.css',
+      \ '*.less',
+      \ '*.scss',
+      \ '*.exe', '*.dll',
+      \ '*.mp3', '*.ogg', '*.flac',
+      \ '*.swp', '*.swo',
+      \ '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png',
+      \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
+      \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
+      \ ]
