@@ -5,7 +5,6 @@ syntax enable
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
@@ -15,21 +14,18 @@ Plug 'Raimondi/delimitMate'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-commentary'
-Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-endwise'
-Plug 'andrejlevkovitch/vim-lua-format'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'cdelledonne/vim-cmake'
 Plug 'preservim/tagbar'
 Plug 'ervandew/supertab'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'plan9-for-vimspace/acme-colors'
+Plug 'arzg/vim-plan9'
 
 call plug#end()
 
@@ -71,8 +67,11 @@ set guioptions-=T
 set guioptions-=r
 set guioptions-=L
 
-set background=dark
-colorscheme palenight
+set background=light
+colorscheme acme
+hi! SpecialKey guibg=NONE guifg=#dadada gui=NONE ctermbg=NONE ctermfg=253 cterm=NONE
+hi! NonText guibg=NONE guifg=#dadada ctermbg=NONE ctermfg=253
+hi! String guibg=#d7ffaf guifg=#000000 ctermbg=193 ctermfg=232
 
 if has ("gui_running")
   set macligatures
@@ -103,7 +102,7 @@ let delimitMate_expand_cr=1
 let delimitMate_jump_expansion=1
 
 " vim-airline settings
-let g:airline_theme='palenight'
+let g:airline_theme='sol'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 
@@ -121,44 +120,9 @@ map <silent> <F2> :call ToggleFileExplorer()<CR>
 let NERDTreeMinimalUI=1
 let NERDTreeShowHidden=1
 
-" Vim Go settings
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
-
-autocmd FileType go nmap <leader>b  <Plug>(go-build)
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
-
-let g:go_list_type="quickfix"
-let g:go_fmt_command="goimports"
-let g:go_auto_sameids=1
-
-let g:go_highlight_types=1
-let g:go_highlight_fields=1
-let g:go_highlight_functions=1
-let g:go_highlight_function_calls=1
-let g:go_highlight_operators=1
-let g:go_highlight_extra_types=1
-let g:go_highlight_build_constraints=1
-let g:go_highlight_generate_tags=1
-
-" Palenight settings
-let g:palenight_terminal_italics=1
-if (has("termguicolors"))
-  set termguicolors
-endif
-
-" Vim Cmake settings
-nmap <leader>cg :CMakeGenerate<cr>
-nmap <leader>cb :CMakeBuild<cr>
-let g:cmake_build_dir_location='./build'
-
 " Tagbar settings
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_autofocus=1
-
-" Lua Format settings
-autocmd BufWrite *.lua call LuaFormat()
 
 " Gutentags settings
 let g:gutentags_ctags_exclude = [
