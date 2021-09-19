@@ -24,8 +24,7 @@ Plug 'preservim/tagbar'
 Plug 'ervandew/supertab'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'plan9-for-vimspace/acme-colors'
-Plug 'arzg/vim-plan9'
+Plug 'robertmeta/nofrils'
 
 call plug#end()
 
@@ -67,11 +66,9 @@ set guioptions-=T
 set guioptions-=r
 set guioptions-=L
 
-set background=light
-colorscheme acme
-hi! SpecialKey guibg=NONE guifg=#dadada gui=NONE ctermbg=NONE ctermfg=253 cterm=NONE
-hi! NonText guibg=NONE guifg=#dadada ctermbg=NONE ctermfg=253
-hi! String guibg=#d7ffaf guifg=#000000 ctermbg=193 ctermfg=232
+colorscheme nofrils-dark
+let g:nofrils_strbackgrounds=1
+let g:nofrils_heavycomments=1
 
 if has ("gui_running")
   set macligatures
@@ -102,7 +99,7 @@ let delimitMate_expand_cr=1
 let delimitMate_jump_expansion=1
 
 " vim-airline settings
-let g:airline_theme='sol'
+let g:airline_theme='minimalist'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 
