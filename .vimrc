@@ -11,19 +11,12 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-surround'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'Raimondi/delimitMate'
-Plug 'preservim/nerdtree'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-fugitive'
-Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
-Plug 'preservim/tagbar'
 Plug 'ervandew/supertab'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'robertmeta/nofrils'
+Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
@@ -40,6 +33,10 @@ set list
 
 set laststatus=2
 set colorcolumn=80
+
+colorscheme nofrils-dark
+let g:nofrils_strbackgrounds=1
+let g:nofrils_heavycomments=1
 
 set hlsearch
 set incsearch
@@ -65,16 +62,6 @@ set guioptions-=T
 set guioptions-=r
 set guioptions-=L
 
-colorscheme nofrils-dark
-let g:nofrils_strbackgrounds=1
-let g:nofrils_heavycomments=1
-
-if has ("gui_running")
-  set macligatures
-endif
-
-set guifont=FiraCodeNerdFontComplete-Light:h18
-
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
@@ -97,25 +84,7 @@ set updatetime=300
 let delimitMate_expand_cr=1
 let delimitMate_jump_expansion=1
 
-" vim-airline settings
-let g:airline_theme='minimalist'
-let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#enabled=1
-
-" NERDTree settings
-function ToggleFileExplorer()
-  if bufname('%') =~ "NERD_tree"
-    :NERDTreeClose
-  else
-    :NERDTreeFocus
-  endif
-endfunction
-
-map <silent> <F2> :call ToggleFileExplorer()<CR>
-
-let NERDTreeMinimalUI=1
-let NERDTreeShowHidden=1
-
-" Tagbar settings
-nmap <F8> :TagbarToggle<CR>
-let g:tagbar_autofocus=1
+" lightline settings
+let g:lightline = {
+      \ 'colorscheme': 'seoul256',
+      \ }
