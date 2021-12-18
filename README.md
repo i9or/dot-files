@@ -10,4 +10,4 @@ git rebase -i --rebase-merges --root --exec 'GIT_COMMITTER_DATE="$(git log -n 1 
 
 ## Attributions
 
-* `Grape.terminal` theme for macOS Terminal.app is slightly changed one from the [lysyi3m/macos-terminal-themes](https://github.com/lysyi3m/macos-terminal-themes) repository.
+* `Grape.terminal` and `SeaShells` themes for macOS Terminal.app are slightly changed ones from the [lysyi3m/macos-terminal-themes](https://github.com/lysyi3m/macos-terminal-themes) repository.

@@ -1,0 +1,21 @@
+[
+// Evaluate
+ {"keys": ["ctrl+enter"],
+  "command": "sublime_clojure_eval",
+  "context": [{"key": "selector", "operator": "equal", "operand": "source.clojure"}]},
+
+// Interrupt Pending Evaluations
+ {"keys": ["ctrl+c"],
+  "command": "sublime_clojure_interrupt_eval",
+  "context": [{"key": "selector", "operator": "equal", "operand": "source.clojure"}]},
+
+ // Toggle Info
+ {"keys": ["ctrl+i"],
+  "command": "sublime_clojure_toggle_info",
+  "context": [{"key": "selector", "operator": "equal", "operand": "source.clojure"}]},
+
+// Clear Evaluation Results
+ {"keys": ["ctrl+l"],
+  "command": "sublime_clojure_clear_evals",
+  "context": [{"key": "selector", "operator": "equal", "operand": "source.clojure"}]},
+]
