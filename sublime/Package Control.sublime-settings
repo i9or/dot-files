@@ -8,8 +8,10 @@
 		"AdvancedNewFile",
 		"Alabaster Color Scheme",
 		"CMake",
+		"Dockerfile Syntax Highlighting",
 		"EditorConfig",
-		"Elixir",
+		"FileIcons Mono",
 		"Package Control",
+		"SideBarTools",
 	],
 }
