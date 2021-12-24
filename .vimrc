@@ -14,7 +14,6 @@ Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'ervandew/supertab'
-Plug 'AndrewRadev/splitjoin.vim'
 Plug 'robertmeta/nofrils'
 Plug 'itchyny/lightline.vim'
 
@@ -28,15 +27,16 @@ set number
 
 set ruler
 set showmatch
-set listchars=eol:¬,space:·,tab:»⠀,trail:~
+set listchars=eol:↴,space:·,tab:»⠀,trail:~
 set list
 
 set laststatus=2
 set colorcolumn=80
 
-colorscheme nofrils-dark
+set background=dark
 let g:nofrils_strbackgrounds=1
 let g:nofrils_heavycomments=1
+colorscheme nofrils-dark
 
 set hlsearch
 set incsearch
@@ -69,9 +69,6 @@ noremap <Right> <NOP>
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-
-inoremap <S-CR> <Esc>o
-inoremap <C-S-CR> <Esc>O
 
 let mapleader = ","
 
