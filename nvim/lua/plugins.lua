@@ -1,10 +1,24 @@
-return require('packer').startup(function()
-  use 'wbthomason/packer.nvim'                          
-  use 'sainnhe/everforest'
-  use {
-	  "max397574/better-escape.nvim",
-	  config = function()
-		  require("better_escape").setup()
-	  end,
-  }
-end)
+function get_config(name)
+	return string.format('require("configs/%s")', name)
+end
+
+return require('packer').startup({
+	function(use)
+		use('wbthomason/packer.nvim')
+		use('sainnhe/everforest')
+		use({ 'max397574/better-escape.nvim', config = get_config("better-escape") })
+		use({
+			'kyazdani42/nvim-tree.lua',
+			requires = {
+				'kyazdani42/nvim-web-devicons',
+			},
+			config = get_config('tree'),
+		})
+
+	end,
+	config = {
+		display = {
+			open_fn = require("packer.util").float,
+		},
+	},
+})
