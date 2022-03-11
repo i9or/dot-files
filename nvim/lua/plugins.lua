@@ -9,6 +9,7 @@ return require('packer').startup({
 		use({ 'max397574/better-escape.nvim', config = get_config("better-escape") })
 		use({
 			'kyazdani42/nvim-tree.lua',
+			commit = "2457e141ae5c2e9c5d94a9550b37b421d25cfff1",
 			requires = {
 				'kyazdani42/nvim-web-devicons',
 			},
