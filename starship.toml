@@ -1,0 +1,10 @@
+command_timeout = 4000
+
+[battery]
+disabled = true
+
+[nodejs]
+symbol = "🧩 "
+
+[cmake]
+symbol = "🔺 "
