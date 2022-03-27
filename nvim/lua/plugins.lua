@@ -28,10 +28,6 @@ return require('packer').startup({
 			after = 'nvim-web-devicons',
 			config = get_config('tree'),
 		})
-		use({
-			'fatih/vim-go',
-			commit = 'dcefd64ba251ffc3d497f8758036735c8f6cc824',
-		})
 	end,
 	config = {
 		display = {
