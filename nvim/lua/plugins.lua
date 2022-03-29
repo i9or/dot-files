@@ -2,36 +2,45 @@ function get_config(name)
 	return string.format('require("configs/%s")', name)
 end
 
-return require('packer').startup({
+return require("packer").startup({
 	function(use)
 		use({
-			'wbthomason/packer.nvim',
-			commit = '4dedd3b08f8c6e3f84afbce0c23b66320cd2a8f2',
+			"wbthomason/packer.nvim",
+			commit = "4dedd3b08f8c6e3f84afbce0c23b66320cd2a8f2",
 		})
 		use({
-			'sainnhe/everforest',
-			commit = '764e36cf49a5845217ef09281adf708ab5abd9e3',
+			"nvim-lua/plenary.nvim",
+			commit = "0d660152000a40d52158c155625865da2aa7aa1b",
 		})
 		use({
-			'max397574/better-escape.nvim',
-			commit = 'd2efbf0093235525e81f537f8f4e63f23acedf06',
-			config = get_config('better-escape'), 
+			"sainnhe/everforest",
+			commit = "764e36cf49a5845217ef09281adf708ab5abd9e3",
 		})
 		use({
-			'kyazdani42/nvim-web-devicons',
-			after = 'everforest',
-			commit = '09e62319974d7d7ec7e53b974724f7942470ef78',
+			"max397574/better-escape.nvim",
+			commit = "d2efbf0093235525e81f537f8f4e63f23acedf06",
+			config = get_config("better-escape"), 
 		})
 		use({
-			'kyazdani42/nvim-tree.lua',
-			commit = '2457e141ae5c2e9c5d94a9550b37b421d25cfff1',
-			after = 'nvim-web-devicons',
-			config = get_config('tree'),
+			"kyazdani42/nvim-web-devicons",
+			after = "everforest",
+			commit = "09e62319974d7d7ec7e53b974724f7942470ef78",
+		})
+		use({
+			"kyazdani42/nvim-tree.lua",
+			commit = "2457e141ae5c2e9c5d94a9550b37b421d25cfff1",
+			after = "nvim-web-devicons",
+			config = get_config("tree"),
+		})
+		use({
+			"nvim-telescope/telescope.nvim",
+			after = "plenary.nvim",
+			commit = "cf2d6d34282afd90f0f5d2aba265a23b068494c2",
 		})
 	end,
 	config = {
 		display = {
-			open_fn = require('packer.util').float,
+			open_fn = require("packer.util").float,
 		},
 	},
 })
