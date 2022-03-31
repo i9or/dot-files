@@ -33,8 +33,13 @@ return require("packer").startup({
 			config = get_config("tree"),
 		})
 		use({
+			"nvim-treesitter/nvim-treesitter",
+			commit = "969f7aee253da4fa8a076c3e171546e76644bb70",
+			run = ":TSUpdate",
+		})
+		use({
 			"nvim-telescope/telescope.nvim",
-			after = "plenary.nvim",
+			after = { "plenary.nvim", "nvim-treesitter" },
 			commit = "cf2d6d34282afd90f0f5d2aba265a23b068494c2",
 		})
 	end,
