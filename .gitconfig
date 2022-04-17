@@ -1,9 +1,9 @@
 [color]
 	ui = true
 [user]
-	email = 80776287+i9or@users.noreply.github.com
+	email = dont@bzzr.me
 	name = Igor
-	signingKey = xxxxxxxxxxxxxxxx
+	signingKey = ****************
 [core]
 	editor = vi
 [push]
@@ -22,6 +22,7 @@
 	p = push
 	lg = log --pretty=oneline --graph --abbrev-commit
 	cb = checkout -b
+	ch = checkout
 	cf = clang-format
 [filter "lfs"]
 	clean = git-lfs clean -- %f
