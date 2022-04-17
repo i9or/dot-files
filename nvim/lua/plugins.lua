@@ -36,11 +36,22 @@ return require("packer").startup({
 			"nvim-treesitter/nvim-treesitter",
 			commit = "969f7aee253da4fa8a076c3e171546e76644bb70",
 			run = ":TSUpdate",
+			config = get_config("treesitter"),
 		})
 		use({
 			"nvim-telescope/telescope.nvim",
 			after = { "plenary.nvim", "nvim-treesitter" },
 			commit = "cf2d6d34282afd90f0f5d2aba265a23b068494c2",
+		})
+		use({
+			"lukas-reineke/indent-blankline.nvim",
+			after = { "nvim-treesitter" },
+			commit = "045d9582094b27f5ae04d8b635c6da8e97e53f1d",
+			config = get_config("indent-blankline"),
+		})
+		use({
+			"editorconfig/editorconfig-vim",
+			commit = "a8e3e66deefb6122f476c27cee505aaae93f7109",
 		})
 	end,
 	config = {
