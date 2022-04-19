@@ -9,3 +9,7 @@ vim.opt.termguicolors = true
 vim.opt.background = "dark"
 vim.g["everforest_background"] = "hard"
 vim.cmd("colorscheme everforest")
+
+-- Language specific options
+-- C
+vim.g["c_syntax_for_h"] = true
