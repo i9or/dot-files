@@ -45,7 +45,7 @@ return require("packer").startup({
 		})
 		use({
 			"lukas-reineke/indent-blankline.nvim",
-			after = { "nvim-treesitter" },
+			after = "nvim-treesitter",
 			commit = "045d9582094b27f5ae04d8b635c6da8e97e53f1d",
 			config = get_config("indent-blankline"),
 		})
@@ -57,6 +57,12 @@ return require("packer").startup({
 			"lewis6991/gitsigns.nvim",
 			commit = "0c7da98aab9c40515f24acba2a4feb85a60dd2a5",
 			config = get_config("gitsigns"),
+		})
+		use({
+			"nvim-lualine/lualine.nvim",
+			commit = "18a07f790ed7ed1f11d1b130c02782e9dfd8dd7d",
+			after = { "nvim-web-devicons", "everforest" },
+			config = get_config("lualine"),
 		})
 	end,
 	config = {
