@@ -8,3 +8,6 @@ symbol = "🧩 "
 
 [cmake]
 symbol = "🔺 "
+
+[aws]
+disabled = true
