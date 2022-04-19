@@ -50,8 +50,13 @@ return require("packer").startup({
 			config = get_config("indent-blankline"),
 		})
 		use({
-			"editorconfig/editorconfig-vim",
-			commit = "a8e3e66deefb6122f476c27cee505aaae93f7109",
+			"tpope/vim-sleuth",
+			commit = "e116c2cc2555b09aee9b18eba405b925c8b7eaf9",
+		})
+		use({
+			"lewis6991/gitsigns.nvim",
+			commit = "0c7da98aab9c40515f24acba2a4feb85a60dd2a5",
+			config = get_config("gitsigns"),
 		})
 	end,
 	config = {
