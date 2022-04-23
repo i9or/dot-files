@@ -13,8 +13,8 @@ map("n", "<C-k>", "<C-w>k", opts)
 map("n", "<C-l>", "<C-w>l", opts)
 
 -- Navigate buffers
-map("n", "<S-l>", "<cmd>bnext<CR>", opts)
-map("n", "<S-h>", "<cmd>bprevious<CR>", opts)
+map("n", "<S-l>", "<cmd>BufferLineCycleNext<CR>", opts)
+map("n", "<S-h>", "<cmd>BufferLineCyclePrev<CR>", opts)
 
 -- Mappings for nvim-tree
 map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", opts)

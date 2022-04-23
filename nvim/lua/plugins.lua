@@ -64,6 +64,12 @@ return require("packer").startup({
 			after = { "nvim-web-devicons", "everforest" },
 			config = get_config("lualine"),
 		})
+		use({
+			"akinsho/bufferline.nvim",
+			tag = "v1.2.0",
+			after = { "nvim-web-devicons", "nvim-tree.lua" },
+			config = get_config("bufferline"),
+		})
 	end,
 	config = {
 		display = {
