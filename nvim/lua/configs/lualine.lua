@@ -19,6 +19,7 @@ lualine.setup({
 		lualine_b = { "branch" },
 		lualine_c = {
 			{ "filename", path = 1 },
+			{ "diagnostics", sources = { "nvim_lsp" } },
 		},
 		lualine_x = {
 			"diff",

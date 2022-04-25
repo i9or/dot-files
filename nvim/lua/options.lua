@@ -5,6 +5,8 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.smartindent = true
 
+vim.opt.mouse = "a"
+
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
 vim.g["everforest_background"] = "hard"
