@@ -24,3 +24,8 @@ map("n", "<leader>n", "<cmd>NvimTreeFindFile<CR>", opts)
 -- Mappings for telescope.nvim
 map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opts)
 map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", opts)
+
+-- Mappings for vim-cmake
+map("n", "<leader>cg", "<cmd>CMakeGenerate<CR>", opts)
+map("n", "<leader>cb", "<cmd>CMakeBuild<CR>", opts)
+map("n", "<leader>cq", "<cmd>CMakeClose<CR>", opts)
