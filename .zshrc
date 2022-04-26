@@ -8,6 +8,9 @@ if which starship > /dev/null; then eval "$(starship init zsh)"; fi
 # Go
 export PATH="$PATH:$(go env GOPATH)/bin"
 
+# LLVM
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+
 # Node.js
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
