@@ -1,11 +1,14 @@
 vim.opt.colorcolumn = "80"
 vim.opt.number = true
+vim.wo.signcolumn = "yes"
 
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.smartindent = true
 
 vim.opt.mouse = "a"
+
+vim.o.completeopt = "menuone,noselect"
 
 vim.opt.termguicolors = true
 vim.opt.background = "dark"

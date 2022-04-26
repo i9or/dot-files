@@ -74,10 +74,15 @@ return require("packer").startup({
 			"neovim/nvim-lspconfig",
 			commit = "ceb5d0c6a7c0a7abb8e12f803ad3f32de313d140",
 			config = get_config("lspconfig"),
+			after = "lsp_signature.nvim",
 		})
 		use({
 			"cdelledonne/vim-cmake",
 			commit = "07fb73ee0d0c89dd608f1ed5f691bc151406558a",
+		})
+		use({
+			"ray-x/lsp_signature.nvim",
+			commit = "a9bcfa817ed494c1e276ace750746d9dec8763fb",
 		})
 	end,
 	config = {
