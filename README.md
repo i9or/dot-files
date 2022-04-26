@@ -6,6 +6,12 @@
 * `nvim` contains [Neovim](https://neovim.io/) configuration, written in Lua. Should be copied to `~/.config/` folder. Additional manual setup is needed for [Packer](https://github.com/wbthomason/packer.nvim#quickstart) plugin.
 <!-- TODO: add the rest of configurations descriptions -->
 
+## Setting up macOS
+
+```sh
+brew install ansible awscli cmake curl elixir fd git go htop llvm neovim pinentry-mac ripgrep sqlite starship terraform tree wget zig
+```
+
 ## Useful one-lines
 
 Rewrite git history commiter name and email, saving dates:
