@@ -70,6 +70,15 @@ return require("packer").startup({
 			after = { "nvim-web-devicons", "nvim-tree.lua" },
 			config = get_config("bufferline"),
 		})
+		use({
+			"neovim/nvim-lspconfig",
+			commit = "ceb5d0c6a7c0a7abb8e12f803ad3f32de313d140",
+			config = get_config("lspconfig"),
+		})
+		use({
+			"cdelledonne/vim-cmake",
+			commit = "07fb73ee0d0c89dd608f1ed5f691bc151406558a",
+		})
 	end,
 	config = {
 		display = {
