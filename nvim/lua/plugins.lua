@@ -74,7 +74,7 @@ return require("packer").startup({
 			"neovim/nvim-lspconfig",
 			commit = "ceb5d0c6a7c0a7abb8e12f803ad3f32de313d140",
 			config = get_config("lspconfig"),
-			after = { "nvim-cmp", "cmp-nvim-lsp", "cmp_luasnip", "LuaSnip" },
+			after = { "nvim-cmp", "cmp-nvim-lsp", "cmp_luasnip", "LuaSnip", "fidget.nvim" },
 		})
 		use({
 			"cdelledonne/vim-cmake",
@@ -95,6 +95,11 @@ return require("packer").startup({
 		use({
 			"L3MON4D3/LuaSnip",
 			commit = "007a0af6d0fd412dfbb31953bb1b81eaf8fbd6fd",
+		})
+		use({
+			"j-hui/fidget.nvim",
+			commit = "956683191df04c5a401e1f1fb2e53b957fbcecaa",
+			config = get_config("fidget"),
 		})
 	end,
 	config = {
