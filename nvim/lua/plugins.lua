@@ -74,15 +74,27 @@ return require("packer").startup({
 			"neovim/nvim-lspconfig",
 			commit = "ceb5d0c6a7c0a7abb8e12f803ad3f32de313d140",
 			config = get_config("lspconfig"),
-			after = "lsp_signature.nvim",
+			after = { "nvim-cmp", "cmp-nvim-lsp", "cmp_luasnip", "LuaSnip" },
 		})
 		use({
 			"cdelledonne/vim-cmake",
 			commit = "07fb73ee0d0c89dd608f1ed5f691bc151406558a",
 		})
 		use({
-			"ray-x/lsp_signature.nvim",
-			commit = "a9bcfa817ed494c1e276ace750746d9dec8763fb",
+			"hrsh7th/nvim-cmp",
+			commit = "433af3dffce64cbd3f99bdac9734768a6cc41951",
+		})
+		use({
+			"hrsh7th/cmp-nvim-lsp",
+			commit = "ebdfc204afb87f15ce3d3d3f5df0b8181443b5ba",
+		})
+		use({
+			"saadparwaiz1/cmp_luasnip",
+			commit = "b10829736542e7cc9291e60bab134df1273165c9",
+		})
+		use({
+			"L3MON4D3/LuaSnip",
+			commit = "007a0af6d0fd412dfbb31953bb1b81eaf8fbd6fd",
 		})
 	end,
 	config = {
