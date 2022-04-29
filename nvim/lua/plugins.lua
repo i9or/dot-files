@@ -101,6 +101,16 @@ return require("packer").startup({
 			commit = "956683191df04c5a401e1f1fb2e53b957fbcecaa",
 			config = get_config("fidget"),
 		})
+		use({
+			"windwp/nvim-autopairs",
+			commit = "63779ea99ed43ab22660ac6ae5b506a40bf41aeb",
+			config = get_config("autopairs"),
+		})
+		use({
+			"goolord/alpha-nvim",
+			commit = "4781fcfea5ddc1a92d41b32dc325132ed6fce7a8",
+			config = get_config("alpha"),
+		})
 	end,
 	config = {
 		display = {

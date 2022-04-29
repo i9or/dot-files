@@ -8,7 +8,7 @@ vim.opt.smartindent = true
 
 vim.opt.mouse = "a"
 
-vim.o.completeopt = "menuone,noselect"
+--vim.o.completeopt = "menuone,noselect"
 
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
