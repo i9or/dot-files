@@ -1,6 +1,9 @@
 local opts = { noremap = true, silent = true }
 local map = vim.api.nvim_set_keymap
 
+-- macOS forward delete
+map("i", "<C-d>", "<Del>", opts)
+
 -- Space as leader key
 map("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
