@@ -19,6 +19,7 @@ return require("packer").startup({
 		use({
 			"max397574/better-escape.nvim",
 			commit = "d2efbf0093235525e81f537f8f4e63f23acedf06",
+			event = "InsertCharPre",
 			config = get_config("better-escape"), 
 		})
 		use({
@@ -36,17 +37,30 @@ return require("packer").startup({
 			"nvim-treesitter/nvim-treesitter",
 			commit = "969f7aee253da4fa8a076c3e171546e76644bb70",
 			run = ":TSUpdate",
+			event = { "BufRead", "BufNewFile" },
+			cmd = {
+				"TSInstall",
+				"TSInstallInfo",
+				"TSInstallSync",
+				"TSUninstall",
+				"TSUpdate",
+				"TSUpdateSync",
+				"TSDisableAll",
+				"TSEnableAll",
+			},
 			config = get_config("treesitter"),
 		})
 		use({
 			"nvim-telescope/telescope.nvim",
 			after = { "plenary.nvim", "nvim-treesitter" },
 			commit = "cf2d6d34282afd90f0f5d2aba265a23b068494c2",
+			cmd = "Telescope",
 		})
 		use({
 			"lukas-reineke/indent-blankline.nvim",
 			after = "nvim-treesitter",
 			commit = "045d9582094b27f5ae04d8b635c6da8e97e53f1d",
+			event = "BufRead",
 			config = get_config("indent-blankline"),
 		})
 		use({
@@ -104,6 +118,7 @@ return require("packer").startup({
 		use({
 			"windwp/nvim-autopairs",
 			commit = "63779ea99ed43ab22660ac6ae5b506a40bf41aeb",
+			event = "InsertEnter",
 			config = get_config("autopairs"),
 		})
 		use({
