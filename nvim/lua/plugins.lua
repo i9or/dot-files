@@ -10,15 +10,15 @@ return require("packer").startup({
 		})
 		use({
 			"nvim-lua/plenary.nvim",
-			commit = "0d660152000a40d52158c155625865da2aa7aa1b",
+			commit = "0a907364b5cd6e3438e230df7add8b9bb5ef6fd3",
 		})
 		use({
 			"sainnhe/everforest",
-			commit = "764e36cf49a5845217ef09281adf708ab5abd9e3",
+			commit = "f748681a3fac2496aedf694f5bd09a30f80cd3c0",
 		})
 		use({
 			"max397574/better-escape.nvim",
-			commit = "d2efbf0093235525e81f537f8f4e63f23acedf06",
+			commit = "d5ee0cef56a7e41a86048c14f25e964876ac20c1",
 			event = "InsertCharPre",
 			config = get_config("better-escape"), 
 		})
@@ -29,7 +29,7 @@ return require("packer").startup({
 		})
 		use({
 			"kyazdani42/nvim-tree.lua",
-			commit = "2457e141ae5c2e9c5d94a9550b37b421d25cfff1",
+			commit = "aefa66c04d2b10cdb356679dbba5952b00116808",
 			after = "nvim-web-devicons",
 			config = get_config("tree"),
 		})
