@@ -25,7 +25,7 @@ return require("packer").startup({
 		use({
 			"kyazdani42/nvim-web-devicons",
 			after = "everforest",
-			commit = "09e62319974d7d7ec7e53b974724f7942470ef78",
+			commit = "53dc7b388ba84a14e40a6ab2d4c22972d81292ad",
 		})
 		use({
 			"kyazdani42/nvim-tree.lua",
