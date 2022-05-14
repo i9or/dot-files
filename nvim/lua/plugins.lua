@@ -53,7 +53,7 @@ return require("packer").startup({
 		use({
 			"nvim-telescope/telescope.nvim",
 			after = { "plenary.nvim", "nvim-treesitter" },
-			commit = "cf2d6d34282afd90f0f5d2aba265a23b068494c2",
+			commit = "39b12d84e86f5054e2ed98829b367598ae53ab41",
 			cmd = "Telescope",
 		})
 		use({
