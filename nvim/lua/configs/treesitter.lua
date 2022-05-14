@@ -13,8 +13,6 @@ ts_config.setup({
 		"cpp",
 		"css",
 		"dockerfile",
-		"eex",
-		"elixir",
 		"glsl",
 		"go",
 		"gomod",
@@ -29,7 +27,6 @@ ts_config.setup({
 		"python",
 		"tsx",
 		"typescript",
-		"zig",
 	},
 	highlight = {
 		enabled = true,
