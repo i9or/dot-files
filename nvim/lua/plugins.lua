@@ -80,44 +80,44 @@ return require("packer").startup({
 		})
 		use({
 			"akinsho/bufferline.nvim",
-			tag = "v1.2.0",
+			tag = "v2.1.0",
 			after = { "nvim-web-devicons", "nvim-tree.lua" },
 			config = get_config("bufferline"),
 		})
 		use({
 			"neovim/nvim-lspconfig",
-			commit = "ceb5d0c6a7c0a7abb8e12f803ad3f32de313d140",
-			config = get_config("lspconfig"),
+			commit = "9ff2a06cebd4c8c3af5259d713959ab310125bec",
 			after = { "nvim-cmp", "cmp-nvim-lsp", "cmp_luasnip", "LuaSnip", "fidget.nvim" },
+			config = get_config("lspconfig"),
 		})
 		use({
 			"cdelledonne/vim-cmake",
-			commit = "07fb73ee0d0c89dd608f1ed5f691bc151406558a",
+			commit = "07fb73ee0d0c89dd608f1ed5f691bc151406558",
 		})
 		use({
 			"hrsh7th/nvim-cmp",
-			commit = "433af3dffce64cbd3f99bdac9734768a6cc41951",
+			commit = "9a0c639ac2324e6e9ecc54dc22b1d32bb6c42ab9",
 		})
 		use({
 			"hrsh7th/cmp-nvim-lsp",
-			commit = "ebdfc204afb87f15ce3d3d3f5df0b8181443b5ba",
+			commit = "e6b5feb2e6560b61f31c756fb9231a0d7b10c73d",
 		})
 		use({
 			"saadparwaiz1/cmp_luasnip",
-			commit = "b10829736542e7cc9291e60bab134df1273165c9",
+			commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36",
 		})
 		use({
 			"L3MON4D3/LuaSnip",
-			commit = "007a0af6d0fd412dfbb31953bb1b81eaf8fbd6fd",
+			commit = "cc0086390c6cd2eaebae1834b115c891649ec95f",
 		})
 		use({
 			"j-hui/fidget.nvim",
-			commit = "956683191df04c5a401e1f1fb2e53b957fbcecaa",
+			commit = "99b306167d1d305ca084e3bb475d6eadf32a365b",
 			config = get_config("fidget"),
 		})
 		use({
 			"windwp/nvim-autopairs",
-			commit = "63779ea99ed43ab22660ac6ae5b506a40bf41aeb",
+			commit = "aea913109d30c87df329ec9b8fea9aed6ef9f52a",
 			event = "InsertEnter",
 			config = get_config("autopairs"),
 		})
