@@ -59,17 +59,17 @@ return require("packer").startup({
 		use({
 			"lukas-reineke/indent-blankline.nvim",
 			after = "nvim-treesitter",
-			commit = "045d9582094b27f5ae04d8b635c6da8e97e53f1d",
+			commit = "8567ac8ccd19ee41a6ec55bf044884799fa3f56b",
 			event = "BufRead",
 			config = get_config("indent-blankline"),
 		})
 		use({
 			"tpope/vim-sleuth",
-			commit = "e116c2cc2555b09aee9b18eba405b925c8b7eaf9",
+			commit = "1d25e8e5dc4062e38cab1a461934ee5e9d59e5a8",
 		})
 		use({
 			"lewis6991/gitsigns.nvim",
-			commit = "0c7da98aab9c40515f24acba2a4feb85a60dd2a5",
+			commit = "ffd06e36f6067935d8cb9793905dd2e84e291310",
 			config = get_config("gitsigns"),
 		})
 		use({
