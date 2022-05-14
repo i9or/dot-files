@@ -126,6 +126,10 @@ return require("packer").startup({
 			commit = "4781fcfea5ddc1a92d41b32dc325132ed6fce7a8",
 			config = get_config("alpha"),
 		})
+		use({
+			"elixir-editors/vim-elixir",
+			commit = "edf880c41ec1768faafc480433ae72ceffaf4362",
+		})
 	end,
 	config = {
 		display = {
