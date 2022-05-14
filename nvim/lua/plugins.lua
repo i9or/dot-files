@@ -135,7 +135,5 @@ return require("packer").startup({
 		display = {
 			open_fn = require("packer.util").float,
 		},
-		snapshot = "current",
-		snapshot_path = "plugin_snapshots",
 	},
 })
