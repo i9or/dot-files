@@ -35,7 +35,7 @@ return require("packer").startup({
 		})
 		use({
 			"nvim-treesitter/nvim-treesitter",
-			commit = "969f7aee253da4fa8a076c3e171546e76644bb70",
+			commit = "b30a830c88490b742cb9791025aa68589f1bba34",
 			run = ":TSUpdate",
 			event = { "BufRead", "BufNewFile" },
 			cmd = {
