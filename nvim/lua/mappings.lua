@@ -9,6 +9,9 @@ map("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Escape Terminal
+map("t", "<Esc>", "<C-\\><C-n>", opts)
+
 -- Better window navigation
 map("n", "<C-h>", "<C-w>h", opts)
 map("n", "<C-j>", "<C-w>j", opts)
