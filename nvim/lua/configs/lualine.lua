@@ -4,21 +4,12 @@ if not present then
 	return
 end
 
-local function lsp_client()
-	local buf_clients = vim.lsp.buf_get_clients()
-	if next(buf_clients) == nil then
-		return ""
-	end
-
-	return " "
-end
-
 lualine.setup({
 	options = {
 		theme = "everforest",
 		disabled_filetypes = {
 			"dashboard",
-			"startify",
+			"alpha",
 			"NvimTree",
 			"packer",
 		},
@@ -31,10 +22,8 @@ lualine.setup({
 		},
 		lualine_c = {
 			{ "filename", path = 1 },
-			{ "diagnostics", sources = { "nvim_lsp" } },
 		},
 		lualine_x = {
-			{ lsp_client },
 			"encoding",
 			"fileformat",
 		},
