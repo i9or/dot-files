@@ -52,14 +52,14 @@ return require("packer").startup({
 		})
 		use({
 			"nvim-telescope/telescope.nvim",
-			after = { "plenary.nvim", "nvim-treesitter" },
 			commit = "39b12d84e86f5054e2ed98829b367598ae53ab41",
+			after = { "plenary.nvim", "nvim-treesitter" },
 			cmd = "Telescope",
 		})
 		use({
 			"lukas-reineke/indent-blankline.nvim",
-			after = "nvim-treesitter",
 			commit = "8567ac8ccd19ee41a6ec55bf044884799fa3f56b",
+			after = "nvim-treesitter",
 			event = "BufRead",
 			config = get_config("indent-blankline"),
 		})
@@ -85,35 +85,8 @@ return require("packer").startup({
 			config = get_config("bufferline"),
 		})
 		use({
-			"neovim/nvim-lspconfig",
-			commit = "9ff2a06cebd4c8c3af5259d713959ab310125bec",
-			after = { "nvim-cmp", "cmp-nvim-lsp", "cmp_luasnip", "LuaSnip", "fidget.nvim" },
-			config = get_config("lspconfig"),
-		})
-		use({
 			"cdelledonne/vim-cmake",
 			commit = "07fb73ee0d0c89dd608f1ed5f691bc151406558",
-		})
-		use({
-			"hrsh7th/nvim-cmp",
-			commit = "9a0c639ac2324e6e9ecc54dc22b1d32bb6c42ab9",
-		})
-		use({
-			"hrsh7th/cmp-nvim-lsp",
-			commit = "e6b5feb2e6560b61f31c756fb9231a0d7b10c73d",
-		})
-		use({
-			"saadparwaiz1/cmp_luasnip",
-			commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36",
-		})
-		use({
-			"L3MON4D3/LuaSnip",
-			commit = "cc0086390c6cd2eaebae1834b115c891649ec95f",
-		})
-		use({
-			"j-hui/fidget.nvim",
-			commit = "99b306167d1d305ca084e3bb475d6eadf32a365b",
-			config = get_config("fidget"),
 		})
 		use({
 			"windwp/nvim-autopairs",
@@ -129,6 +102,10 @@ return require("packer").startup({
 		use({
 			"elixir-editors/vim-elixir",
 			commit = "edf880c41ec1768faafc480433ae72ceffaf4362",
+		})
+		use({
+			"tpope/vim-surround",
+			commit = "bf3480dc9ae7bea34c78fbba4c65b4548b5b1fea",
 		})
 	end,
 	config = {
