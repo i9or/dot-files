@@ -107,6 +107,14 @@ return require("packer").startup({
 			"tpope/vim-surround",
 			commit = "bf3480dc9ae7bea34c78fbba4c65b4548b5b1fea",
 		})
+		use({
+			"b3nj5m1n/kommentary",
+			commit = "12ecde4ed3ecb39964000a5fd034ae4c1d307388",
+		})
+		use({
+			"Olical/conjure",
+			commit = "868e66e1a962ba078931bc01333d82f2a3f5845f",
+		})
 	end,
 	config = {
 		display = {
