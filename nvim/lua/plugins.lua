@@ -100,10 +100,6 @@ return require("packer").startup({
 			config = get_config("alpha"),
 		})
 		use({
-			"elixir-editors/vim-elixir",
-			commit = "edf880c41ec1768faafc480433ae72ceffaf4362",
-		})
-		use({
 			"tpope/vim-surround",
 			commit = "bf3480dc9ae7bea34c78fbba4c65b4548b5b1fea",
 		})
