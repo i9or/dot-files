@@ -85,19 +85,10 @@ return require("packer").startup({
 			config = get_config("bufferline"),
 		})
 		use({
-			"cdelledonne/vim-cmake",
-			commit = "07fb73ee0d0c89dd608f1ed5f691bc151406558",
-		})
-		use({
 			"windwp/nvim-autopairs",
 			commit = "aea913109d30c87df329ec9b8fea9aed6ef9f52a",
 			event = "InsertEnter",
 			config = get_config("autopairs"),
-		})
-		use({
-			"goolord/alpha-nvim",
-			commit = "4781fcfea5ddc1a92d41b32dc325132ed6fce7a8",
-			config = get_config("alpha"),
 		})
 		use({
 			"tpope/vim-surround",
@@ -106,10 +97,6 @@ return require("packer").startup({
 		use({
 			"b3nj5m1n/kommentary",
 			commit = "12ecde4ed3ecb39964000a5fd034ae4c1d307388",
-		})
-		use({
-			"Olical/conjure",
-			commit = "868e66e1a962ba078931bc01333d82f2a3f5845f",
 		})
 	end,
 	config = {

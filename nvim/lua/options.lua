@@ -3,19 +3,12 @@ vim.opt.number = true
 vim.wo.signcolumn = "yes"
 
 vim.opt.scrolloff = 3
-vim.opt.autowrite = true
 vim.opt.mousehide = true
-vim.opt.hidden = true
 vim.opt.showmatch = true
-vim.opt.matchtime = 5
 
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.smartindent = true
-
-vim.opt.backup = false
-vim.opt.swapfile = false
-vim.opt.writebackup = false
 
 vim.opt.cursorline = true
 
