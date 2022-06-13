@@ -39,3 +39,6 @@ export CHROME_EXECUTABLE=chromium
 
 # Java
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
+
+# Ruby
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
