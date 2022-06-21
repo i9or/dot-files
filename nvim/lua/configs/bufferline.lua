@@ -6,6 +6,10 @@ end
 
 bufferline.setup({
 	options = {
+		buffer_close_icon = "×",
+		close_icon = "×",
+		right_trunc_marker = "→",
+		left_trunc_marker = "←",
 		offsets = {
 			{
 				filetype = "NvimTree",
