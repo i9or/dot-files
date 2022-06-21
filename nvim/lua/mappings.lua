@@ -41,5 +41,5 @@ map("n", "<leader>r", "<cmd>NvimTreeRefresh<CR>", opts)
 map("n", "<leader>n", "<cmd>NvimTreeFindFile<CR>", opts)
 
 -- Mappings for telescope.nvim
-map("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<CR>", opts)
+map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opts)
 map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", opts)
