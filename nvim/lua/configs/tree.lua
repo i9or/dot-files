@@ -13,29 +13,18 @@ g.nvim_tree_root_folder_modifier = table.concat { ":t:gs?$?/..", string.rep(" ",
 
 g.nvim_tree_show_icons = {
 	folders = 1,
-	files = 1,
-	git = 1,
+	files = 0,
+	git = 0,
 }
 
 g.nvim_tree_icons = {
-	default = "",
-	symlink = "",
-	git = {
-		deleted = "",
-		ignored = "◌",
-		renamed = "➜",
-		staged = "✓",
-		unmerged = "",
-		unstaged = "✗",
-		untracked = "★",
-	},
 	folder = {
-		default = "",
-		empty = "",
-		empty_open = "",
-		open = "",
-		symlink = "",
-		symlink_open = "",
+		default = "›",
+		empty = "›",
+		empty_open = "⌄",
+		open = "⌄",
+		symlink = "⌄",
+		symlink_open = "›",
 	},
 }
 

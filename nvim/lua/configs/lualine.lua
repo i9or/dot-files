@@ -6,10 +6,10 @@ end
 
 lualine.setup({
 	options = {
+		icons_enabled = false,
 		theme = "everforest",
 		disabled_filetypes = {
 			"dashboard",
-			"alpha",
 			"NvimTree",
 			"packer",
 		},
