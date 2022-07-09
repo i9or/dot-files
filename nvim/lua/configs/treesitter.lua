@@ -6,7 +6,6 @@ end
 
 ts_config.setup({
 	ensure_installed = {
-		"lua",
 		"c",
 		"clojure",
 		"cmake",
@@ -24,10 +23,12 @@ ts_config.setup({
 		"jsdoc",
 		"json",
 		"lua",
+		"lua",
 		"make",
 		"python",
 		"tsx",
 		"typescript",
+		"zig",
 	},
 	highlight = {
 		enabled = true,
