@@ -30,15 +30,15 @@ local settings = {
     renderer = {
         indent_markers = {enable = true},
         icons = {
-            show = {file = false, folder = true, git = false},
+            show = {
+                file = false,
+                folder = false,
+                git = false
+            },
             glyphs = {
                 folder = {
-                    default = "›",
-                    empty = "›",
-                    empty_open = "⌄",
-                    open = "⌄",
-                    symlink = "⌄",
-                    symlink_open = "›"
+                    arrow_closed = "📁",
+                    arrow_open = "📂"
                 }
             }
         }
