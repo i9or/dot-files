@@ -2,8 +2,8 @@
 alias ll="ls -alFGh"
 alias ls="ls -G"
 
-# Micro editor
-alias m="micro"
+# Docker Compose
+alias doco="docker-compose"
 
 # Starship prompt
 if which starship > /dev/null; then eval "$(starship init zsh)"; fi
@@ -12,7 +12,7 @@ if which starship > /dev/null; then eval "$(starship init zsh)"; fi
 export PATH="$PATH:$(go env GOPATH)/bin"
 
 # LLVM
-export PATH="/usr/local/opt/llvm/bin:$PATH"
+#export PATH="/usr/local/opt/llvm/bin:$PATH"
 
 # Node.js
 export NVM_DIR="$HOME/.nvm"
@@ -22,23 +22,12 @@ export NVM_DIR="$HOME/.nvm"
 # User bin folder
 export PATH="/usr/local/sbin:$PATH"
 
-# Terraform shortcut
-alias tf="terraform"
-
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/terraform terraform
-
-# Dart SDK
-export PATH="$PATH:/usr/local/opt/dart/libexec"
-
-# Dart Pub
-export PATH="$PATH:$HOME/.pub-cache/bin"
-
 # Use Chromium instead of Chrome
 export CHROME_EXECUTABLE=chromium
 
-# Java
-export PATH="/usr/local/opt/openjdk/bin:$PATH"
-
 # Ruby
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# Colima Docker settings
+# export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
