@@ -27,6 +27,7 @@ vim.g.maplocalleader = " "
 -- Lazy plugin manager
 require("lazy").setup({
 	"nvim-lua/plenary.nvim",
+	
 	{
 		"EdenEast/nightfox.nvim",
 		lazy = false,
@@ -43,10 +44,10 @@ require("lazy").setup({
 					},
 				},
 			})
-
 			vim.cmd([[colorscheme nightfox]])
 		end,
 	},
+	
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
@@ -54,9 +55,13 @@ require("lazy").setup({
 			require("nvim-autopairs").setup({})
 		end,
 	},
+	
 	"b3nj5m1n/kommentary",
+	
 	"tpope/vim-sleuth",
+	
 	"nvim-tree/nvim-web-devicons",
+	
 	{
 		"nvim-tree/nvim-tree.lua",
 		config = function ()
@@ -87,6 +92,7 @@ require("lazy").setup({
 			})
 		end,
 	},
+	
 	{
 		"max397574/better-escape.nvim",
 		event = "InsertCharPre",
@@ -94,6 +100,7 @@ require("lazy").setup({
 			require("better_escape").setup({})
 		end,
 	},
+	
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
@@ -156,10 +163,12 @@ require("lazy").setup({
 			})
 		end,
 	},
+	
 	{
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
 	},
+	
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufRead",
@@ -181,13 +190,16 @@ require("lazy").setup({
 			})
 		end,
 	},
+	
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
 			require("gitsigns").setup({})
 		end,
 	},
+
 	"tpope/vim-surround",
+
 	{
 		"nvim-lualine/lualine.nvim",
 		config = function ()
@@ -195,6 +207,8 @@ require("lazy").setup({
 				options = {
 					disabled_filetypes = {
 						statusline = {
+							"dashboard",
+							"alpha",
 							"NvimTree",
 						},
 					},
@@ -202,6 +216,7 @@ require("lazy").setup({
 			})
 		end,
 	},
+
 	{
 		"akinsho/bufferline.nvim",
 		tag = "v3.1.0",
@@ -220,7 +235,27 @@ require("lazy").setup({
 				},
 			})
 		end,
-	}
+	},
+
+	{
+		"goolord/alpha-nvim",
+		config = function ()
+			local dashboard = require("alpha.themes.dashboard")
+
+			dashboard.section.buttons.val = {
+				dashboard.button( "e", "  New file" , ":ene <BAR> startinsert <CR>"),
+				dashboard.button( "SPC f f", "  Find file"),
+				dashboard.button( "SPC f g", "  Find word"),
+				dashboard.button( "CTRL n", "  Open File Explorer", ":NvimTreeToggle<CR>"),
+				dashboard.button( "q", "  Quit NVIM" , ":qa<CR>"),
+			}
+
+			dashboard.config.opts.noautocmd = true
+			vim.cmd[[autocmd User AlphaReady echo 'ready']]
+
+			require("alpha").setup(dashboard.config)
+		end,
+	},
 })
 
 -- Rest of the mappings
