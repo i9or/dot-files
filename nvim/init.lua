@@ -31,7 +31,7 @@ vim.g.maplocalleader = " "
 -- Lazy plugin manager
 require("lazy").setup({
 	"nvim-lua/plenary.nvim",
-	
+
 	{
 		"EdenEast/nightfox.nvim",
 		lazy = false,
@@ -45,13 +45,14 @@ require("lazy").setup({
 					},
 					inverse = {
 						match_paren = true,
+						visual = true,
 					},
 				},
 			})
 			vim.cmd([[colorscheme nightfox]])
 		end,
 	},
-	
+
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
@@ -59,13 +60,13 @@ require("lazy").setup({
 			require("nvim-autopairs").setup({})
 		end,
 	},
-	
+
 	"b3nj5m1n/kommentary",
-	
+
 	"tpope/vim-sleuth",
-	
+
 	"nvim-tree/nvim-web-devicons",
-	
+
 	{
 		"nvim-tree/nvim-tree.lua",
 		config = function ()
@@ -96,7 +97,7 @@ require("lazy").setup({
 			})
 		end,
 	},
-	
+
 	{
 		"max397574/better-escape.nvim",
 		event = "InsertCharPre",
@@ -104,7 +105,7 @@ require("lazy").setup({
 			require("better_escape").setup({})
 		end,
 	},
-	
+
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
@@ -167,12 +168,12 @@ require("lazy").setup({
 			})
 		end,
 	},
-	
+
 	{
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
 	},
-	
+
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufRead",
@@ -194,7 +195,7 @@ require("lazy").setup({
 			})
 		end,
 	},
-	
+
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
@@ -246,6 +247,12 @@ require("lazy").setup({
 		config = function ()
 			local dashboard = require("alpha.themes.dashboard")
 
+			dashboard.section.header.val = {
+				[[╔═════════════╗]],
+				[[║ N e o V i m ║]],
+				[[╚═════════════╝]],
+			}
+
 			dashboard.section.buttons.val = {
 				dashboard.button( "e", "  New file" , ":ene <BAR> startinsert <CR>"),
 				dashboard.button( "SPC f f", "  Find file"),
@@ -260,6 +267,8 @@ require("lazy").setup({
 			require("alpha").setup(dashboard.config)
 		end,
 	},
+
+	"ntpeters/vim-better-whitespace",
 })
 
 -- ============================================================================
