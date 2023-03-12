@@ -288,14 +288,23 @@ require("lazy").setup({
 
 	"ntpeters/vim-better-whitespace",
 
-	"ray-x/lsp_signature.nvim",
-
 	{
 		"j-hui/fidget.nvim",
 		config = function ()
 			require("fidget").setup({})
 		end
 	},
+
+	{
+		"L3MON4D3/LuaSnip",
+		version = "1.*",
+	},
+
+	"saadparwaiz1/cmp_luasnip",
+
+	"hrsh7th/nvim-cmp",
+
+	"hrsh7th/cmp-nvim-lsp",
 
 	{
 		"neovim/nvim-lspconfig",
@@ -316,13 +325,103 @@ require("lazy").setup({
 				vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 				vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 				vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-				vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>=", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-
-				require("lsp_signature").on_attach()
+				vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>=", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
+				vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+				vim.api.nvim_buf_set_keymap(bufnr, "i", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 			end
+
+			local kind_icons = {
+				Text = "",
+				Method = "",
+				Function = "",
+				Constructor = "",
+				Field = "",
+				Variable = "",
+				Class = "ﴯ",
+				Interface = "",
+				Module = "",
+				Property = "ﰠ",
+				Unit = "",
+				Value = "",
+				Enum = "",
+				Keyword = "",
+				Snippet = "",
+				Color = "",
+				File = "",
+				Reference = "",
+				Folder = "",
+				EnumMember = "",
+				Constant = "",
+				Struct = "",
+				Event = "",
+				Operator = "",
+				TypeParameter = ""
+			}
+
+			local cmp = require("cmp")
+			local luasnip = require("luasnip")
+
+			cmp.setup({
+				snippet = {
+					expand = function (args)
+						luasnip.lsp_expand(args.body)
+					end,
+				},
+				formatting = {
+					format = function (entry, vim_item)
+						vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
+						vim_item.menu = ({
+							buffer = "[Buffer]",
+							nvim_lsp = "[LSP]",
+							luasnip = "[LuaSnip]",
+						})[entry.source.name]
+
+						return vim_item
+					end
+				},
+				mapping = cmp.mapping.preset.insert({
+					["<C-d>"] = cmp.mapping.scroll_docs(-4),
+					["<C-f>"] = cmp.mapping.scroll_docs(4),
+					["<C-space>"] = cmp.mapping.complete(),
+					["<C-e>"] = cmp.mapping.abort(),
+					["<CR>"] = cmp.mapping.confirm({
+						behavior = cmp.ConfirmBehavior.Replace,
+						select = true,
+					}),
+					["<Tab>"] = cmp.mapping(function (fallback)
+						if cmp.visible() then
+							cmp.select_next_item()
+						elseif luasnip.expand_or_jumpable() then
+							luasnip.expand_or_jump()
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
+					["<S-Tab>"] = cmp.mapping(function (fallback)
+						if cmp.visible() then
+							cmp.select_prev_item()
+						elseif luasnip.jumpable(-1) then
+							luasnip.jump(-1)
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
+				}),
+				completion = {
+					autocomplete = false,
+				},
+				sources = {
+					{ name = "nvim_lsp" },
+					{ name = "luasnip" },
+					{ name = "buffer" },
+				},
+			})
+
+			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 			require("lspconfig")["clangd"].setup({
 				on_attach = on_attach,
+				capabilities = capabilities,
 			})
 		end,
 	},
@@ -342,10 +441,10 @@ keymap("t", "<Esc>", "<C-\\><C-n>", opts)
 keymap("n", "<leader>ss", "<cmd>nohlsearch<CR>", opts)
 
 -- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
+--[[ keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+keymap("n", "<C-l>", "<C-w>l", opts) ]]
 
 -- Visual mode indent
 keymap("v", "<", "<gv", opts)
@@ -374,16 +473,6 @@ keymap("n", "<S-h>", "<cmd>BufferLineCyclePrev<CR>", opts)
 keymap("n", "<leader>cg", "<cmd>CMakeGenerate<CR>", opts)
 keymap("n", "<leader>cb", "<cmd>CMakeBuild<CR>", opts)
 keymap("n", "<leader>cq", "<cmd>CMakeClose<CR>", opts)
-
--- Mappings for lsp_signature.nvim
-vim.keymap.set({ "n" }, "<C-k>", function()
-	require('lsp_signature').toggle_float_win()
-end, opts)
-
-vim.keymap.set({ "n" }, "<Leader>k", function()
-	vim.lsp.buf.signature_help()
-end, opts)
-
 
 -- ============================================================================
 -- ============================================================================
