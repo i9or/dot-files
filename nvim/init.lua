@@ -25,6 +25,21 @@ vim.g.maplocalleader = " "
 
 -- ============================================================================
 -- ============================================================================
+-- Helpers
+-- ============================================================================
+-- ============================================================================
+
+local function lsp_client()
+	local buf_clients = vim.lsp.buf_get_clients()
+	if next(buf_clients) == nil then
+		return ""
+	end
+
+	return " "
+end
+
+-- ============================================================================
+-- ============================================================================
 -- Plugins section
 -- ============================================================================
 -- ============================================================================
@@ -44,7 +59,7 @@ require("lazy").setup({
 						comments = "italic"
 					},
 					inverse = {
-						match_paren = true,
+--						match_paren = true,
 						visual = true,
 					},
 				},
@@ -129,35 +144,17 @@ require("lazy").setup({
 					"cmake",
 					"comment",
 					"cpp",
-					"css",
-					"dockerfile",
 					"gitattributes",
 					"gitignore",
 					"glsl",
-					"go",
-					"gomod",
-					"gowork",
-					"graphql",
-					"html",
 					"ini",
-					"javascript",
-					"jsdoc",
 					"json",
-					"json5",
 					"lua",
 					"make",
 					"markdown",
-					"prisma",
-					"proto",
 					"python",
 					"regex",
-					"ruby",
-					"scheme",
-					"scss",
 					"sql",
-					"svelte",
-					"tsx",
-					"typescript",
 					"yaml"
 					-- LuaFormatter on
 				},
@@ -218,6 +215,27 @@ require("lazy").setup({
 						},
 					},
 				},
+				sections = {
+					lualine_a = { "mode" },
+					lualine_b = {
+						"branch",
+						"diff",
+					},
+					lualine_c = {
+						{ "filename", path = 1 },
+						{ "diagnostics", sources = { "nvim_lsp" } },
+					},
+					lualine_x = {
+						{ lsp_client },
+						"encoding",
+						"fileformat",
+					},
+					lualine_y = { "filetype" },
+					lualine_z = {
+						{ "progress", padding = { right = 0 }, separator = "" },
+						{ "location", padding = { left = 0 } },
+					},
+				},
 			})
 		end,
 	},
@@ -269,6 +287,47 @@ require("lazy").setup({
 	},
 
 	"ntpeters/vim-better-whitespace",
+
+	"ray-x/lsp_signature.nvim",
+
+	{
+		"j-hui/fidget.nvim",
+		config = function ()
+			require("fidget").setup({})
+		end
+	},
+
+	{
+		"neovim/nvim-lspconfig",
+		config = function ()
+			vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+			vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+			vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
+
+			local on_attach = function (client, bufnr)
+				vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+				vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+				vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+				vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+				vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+				vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+				vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+				vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+				vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+				vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>=", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+
+				require("lsp_signature").on_attach()
+			end
+
+			require("lspconfig")["clangd"].setup({
+				on_attach = on_attach,
+			})
+		end,
+	},
+
+	"cdelledonne/vim-cmake",
 })
 
 -- ============================================================================
@@ -311,13 +370,36 @@ keymap("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", opts)
 keymap("n", "<S-l>", "<cmd>BufferLineCycleNext<CR>", opts)
 keymap("n", "<S-h>", "<cmd>BufferLineCyclePrev<CR>", opts)
 
+-- Mappings for vim-cmake
+keymap("n", "<leader>cg", "<cmd>CMakeGenerate<CR>", opts)
+keymap("n", "<leader>cb", "<cmd>CMakeBuild<CR>", opts)
+keymap("n", "<leader>cq", "<cmd>CMakeClose<CR>", opts)
+
+-- Mappings for lsp_signature.nvim
+vim.keymap.set({ "n" }, "<C-k>", function()
+	require('lsp_signature').toggle_float_win()
+end, opts)
+
+vim.keymap.set({ "n" }, "<Leader>k", function()
+	vim.lsp.buf.signature_help()
+end, opts)
+
+
 -- ============================================================================
 -- ============================================================================
 -- Rest of the options
 -- ============================================================================
 -- ============================================================================
 vim.opt.colorcolumn = "80"
+
+-- Enable line numbers and relative line numbers
 vim.opt.number = true
+vim.opt.relativenumber = true
+
+-- Enable both absolute and relative line numbers (rnu stands for "relative number and number")
+vim.opt.nu = true
+vim.opt.rnu = true
+
 vim.wo.signcolumn = "yes"
 
 vim.opt.scrolloff = 3
@@ -346,3 +428,7 @@ vim.cmd("highlight clear SignColumn")
 -- Language specific options
 -- C
 vim.g["c_syntax_for_h"] = true
+
+-- CMake
+vim.g["cmake_link_compile_commands"] = 1
+vim.g["cmake_build_dir_location"] = "./build"
