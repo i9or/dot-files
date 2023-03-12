@@ -9,10 +9,7 @@ alias doco="docker-compose"
 if which starship > /dev/null; then eval "$(starship init zsh)"; fi
 
 # Go
-export PATH="$PATH:$(go env GOPATH)/bin"
-
-# LLVM
-#export PATH="/usr/local/opt/llvm/bin:$PATH"
+# export PATH="$PATH:$(go env GOPATH)/bin"
 
 # Node.js
 export NVM_DIR="$HOME/.nvm"
