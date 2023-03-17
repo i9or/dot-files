@@ -144,18 +144,28 @@ require("lazy").setup({
 					"cmake",
 					"comment",
 					"cpp",
+					"dockerfile",
 					"gitattributes",
 					"gitignore",
 					"glsl",
+					"graphql",
+					"html",
 					"ini",
+					"javascript",
 					"json",
 					"lua",
 					"make",
 					"markdown",
+					"markdown_inline",
+					"prisma",
 					"python",
 					"regex",
+					"ruby",
+					"scss",
 					"sql",
-					"yaml"
+					"tsx",
+					"typescript",
+					"yaml",
 					-- LuaFormatter on
 				},
 				highlight = {
@@ -427,6 +437,8 @@ require("lazy").setup({
 	},
 
 	"cdelledonne/vim-cmake",
+
+	"elixir-editors/vim-elixir",
 })
 
 -- ============================================================================
