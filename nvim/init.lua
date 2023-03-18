@@ -438,8 +438,6 @@ require("lazy").setup({
 
 	"cdelledonne/vim-cmake",
 
-	"elixir-editors/vim-elixir",
-
 	"tpope/vim-rails",
 })
 
