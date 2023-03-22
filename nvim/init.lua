@@ -314,6 +314,8 @@ require("lazy").setup({
 
 	"hrsh7th/nvim-cmp",
 
+	"hrsh7th/cmp-buffer",
+
 	"hrsh7th/cmp-nvim-lsp",
 
 	{
@@ -429,7 +431,14 @@ require("lazy").setup({
 
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-			require("lspconfig")["clangd"].setup({
+			local lspconfig = require("lspconfig")
+
+			lspconfig["clangd"].setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+			})
+
+			lspconfig["gopls"].setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
 			})
