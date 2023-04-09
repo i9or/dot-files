@@ -141,6 +141,7 @@ require("lazy").setup({
 					-- LuaFormatter off
 					"bash",
 					"c",
+					"clojure",
 					"cmake",
 					"comment",
 					"cpp",
