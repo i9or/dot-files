@@ -311,6 +311,10 @@ require("lazy").setup({
 		version = "1.*",
 	},
 
+	"Olical/conjure",
+
+	"PaterJason/cmp-conjure",
+
 	"saadparwaiz1/cmp_luasnip",
 
 	"hrsh7th/nvim-cmp",
@@ -387,6 +391,7 @@ require("lazy").setup({
 							buffer = "[Buffer]",
 							nvim_lsp = "[LSP]",
 							luasnip = "[LuaSnip]",
+							conjure = "[Conjure]",
 						})[entry.source.name]
 
 						return vim_item
@@ -427,6 +432,7 @@ require("lazy").setup({
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "buffer" },
+					{ name = "conjure" },
 				},
 			})
 
@@ -543,3 +549,11 @@ vim.g["c_syntax_for_h"] = true
 -- CMake
 vim.g["cmake_link_compile_commands"] = 1
 vim.g["cmake_build_dir_location"] = "./build"
+
+-- Clojure
+vim.cmd([[
+augroup CONJURE_HIDE_SPONSORS
+	autocmd!
+	autocmd BufWinEnter conjure-log-* :s/; Sponsored by @.*//e
+augroup END
+]])
