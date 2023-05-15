@@ -92,14 +92,12 @@ require("lazy").setup({
 				update_focused_file = {
 					enable = true,
 				},
-				view = {
-					hide_root_folder = true,
-				},
 				git = {
 					enable = false,
 					ignore = false,
 				},
 				renderer = {
+					root_folder_label = false,
 					indent_markers = {
 						enable = true,
 					},
@@ -253,7 +251,7 @@ require("lazy").setup({
 
 	{
 		"akinsho/bufferline.nvim",
-		tag = "v3.1.0",
+		tag = "v4.1.0",
 		config = function ()
 			require("bufferline").setup({
 				options = {
@@ -284,10 +282,10 @@ require("lazy").setup({
 
 			dashboard.section.buttons.val = {
 				dashboard.button( "e", "  New file" , ":ene <BAR> startinsert <CR>"),
-				dashboard.button( "SPC f f", "  Find file"),
-				dashboard.button( "SPC f g", "  Find word"),
+				dashboard.button( "SPC f f", "󰍉  Find file"),
+				dashboard.button( "SPC f g", "󰈬  Find word"),
 				dashboard.button( "CTRL n", "  Open File Explorer", ":NvimTreeToggle<CR>"),
-				dashboard.button( "q", "  Quit NVIM" , ":qa<CR>"),
+				dashboard.button( "q", "󰅚  Quit NVIM" , ":qa<CR>"),
 			}
 
 			dashboard.config.opts.noautocmd = true
@@ -349,30 +347,30 @@ require("lazy").setup({
 
 			local kind_icons = {
 				Text = "",
-				Method = "",
-				Function = "",
+				Method = "󰆧",
+				Function = "󰊕",
 				Constructor = "",
-				Field = "",
-				Variable = "",
-				Class = "ﴯ",
+				Field = "󰇽",
+				Variable = "󰂡",
+				Class = "󰠱",
 				Interface = "",
 				Module = "",
-				Property = "ﰠ",
+				Property = "󰜢",
 				Unit = "",
-				Value = "",
+				Value = "󰎠",
 				Enum = "",
-				Keyword = "",
+				Keyword = "󰌋",
 				Snippet = "",
-				Color = "",
-				File = "",
+				Color = "󰏘",
+				File = "󰈙",
 				Reference = "",
-				Folder = "",
+				Folder = "󰉋",
 				EnumMember = "",
-				Constant = "",
+				Constant = "󰏿",
 				Struct = "",
 				Event = "",
-				Operator = "",
-				TypeParameter = ""
+				Operator = "󰆕",
+				TypeParameter = "󰅲"
 			}
 
 			local cmp = require("cmp")
