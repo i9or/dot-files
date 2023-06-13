@@ -453,6 +453,8 @@ require("lazy").setup({
 	"cdelledonne/vim-cmake",
 
 	"tpope/vim-rails",
+
+	"ggandor/lightspeed.nvim",
 })
 
 -- ============================================================================
