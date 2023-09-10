@@ -26,6 +26,43 @@ require('lazy').setup({
   'ggandor/lightspeed.nvim',
 
   {
+    "nvim-tree/nvim-tree.lua",
+    config = function()
+      require("nvim-tree").setup({
+        disable_netrw = true,
+        hijack_cursor = true,
+        sync_root_with_cwd = true,
+        update_focused_file = {
+          enable = true,
+        },
+        git = {
+          enable = false,
+          ignore = false,
+        },
+        renderer = {
+          root_folder_label = false,
+          indent_markers = {
+            enable = true,
+          },
+          icons = {
+            show = {
+              git = false,
+            },
+          },
+        },
+      })
+    end,
+  },
+
+  {
+    "max397574/better-escape.nvim",
+    event = "InsertCharPre",
+    config = function()
+      require("better_escape").setup({})
+    end,
+  },
+
+  {
     'neovim/nvim-lspconfig',
     dependencies = {
       { 'williamboman/mason.nvim', config = true },
@@ -165,6 +202,9 @@ vim.o.smartindent = true
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- Mappings for nvim-tree
+vim.keymap.set('n', '<C-n>', "<cmd>NvimTreeToggle<CR>", { noremap = true, silent = true })
 
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -338,11 +378,11 @@ end
 
 local servers = {
   clangd = {},
-  gopls = {},
+  -- gopls = {},
   -- pyright = {},
-  rust_analyzer = {},
+  -- rust_analyzer = {},
   tsserver = {},
-  html = { filetypes = { 'html', 'twig', 'hbs' } },
+  html = { filetypes = { 'html', 'hbs' } },
 
   lua_ls = {
     Lua = {
