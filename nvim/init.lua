@@ -23,6 +23,8 @@ require('lazy').setup({
 
   'tpope/vim-sleuth',
 
+  'ziglang/zig.vim',
+
   'ggandor/lightspeed.nvim',
 
   {
