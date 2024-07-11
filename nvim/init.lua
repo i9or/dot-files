@@ -229,6 +229,7 @@ require("lazy").setup({
       local servers = {
         clangd = {},
         gopls = {},
+        zls = {},
         lua_ls = {
           settings = {
             Lua = {
@@ -398,6 +399,7 @@ require("lazy").setup({
         "make",
         "markdown",
         "markdown_inline",
+        "objc",
         "python",
         "regex",
         "sql",
@@ -445,6 +447,7 @@ vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.inccommand = "split"
 vim.opt.hlsearch = true
+vim.opt.tabstop = 4
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
