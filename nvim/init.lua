@@ -402,6 +402,7 @@ require("lazy").setup({
         "objc",
         "python",
         "regex",
+        "ruby",
         "sql",
         "vim",
         "vimdoc",
