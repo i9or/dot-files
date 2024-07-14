@@ -17,7 +17,7 @@ set showmatch
 set splitright
 set splitbelow
 set list
-set listchars=lead:\ ,trail:·,nbsp:◇,tab:→\ ,extends:▸,precedes:◂,multispace:···⬝,leadmultispace:\│\ \ \ ,
+set listchars=lead:\ ,trail:·,nbsp:◇,tab:→\ ,extends:▸,precedes:◂,leadmultispace:\│\ \ \ ,
 set hlsearch
 set tabstop=4
 
@@ -33,15 +33,15 @@ set laststatus=2
 set colorcolumn=80
 
 if has('termguicolors')
-		set termguicolors
+  set termguicolors
 endif
 
 set title
 set showcmd
 set tabstop=2 shiftwidth=2
-set expandtab
 set backspace=indent,eol,start
 set autoindent
+set expandtab
 
 set guioptions-=m
 set guioptions-=T
@@ -57,3 +57,14 @@ noremap <C-h> <C-w><C-h>
 noremap <C-l> <C-w><C-l>
 noremap <C-j> <C-w><C-j>
 noremap <C-k> <C-w><C-k>
+
+set statusline=
+set statusline +=\ %n\ %* "buffer number
+set statusline +=%{&ff}%* "file format
+set statusline +=%y%* "file type
+set statusline +=\ %<%F%* "full path
+set statusline +=%m%* "modified flag
+set statusline +=%=%5l%* "current line
+set statusline +=/%L%* "total lines
+set statusline +=%4v\ %* "virtual column number
+set statusline +=0x%04B\ %* "character under cursor
