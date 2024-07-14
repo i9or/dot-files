@@ -53,8 +53,6 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-noremap <Esc> <cmd>nohlsearch<CR>
-
 noremap <C-h> <C-w><C-h>
 noremap <C-l> <C-w><C-l>
 noremap <C-j> <C-w><C-j>
