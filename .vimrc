@@ -24,7 +24,6 @@ set tabstop=4
 set nocompatible
 filetype plugin on
 filetype indent on
-syntax enable
 
 set encoding=utf-8
 set wildmenu
@@ -68,3 +67,6 @@ set statusline +=%=%5l%* "current line
 set statusline +=/%L%* "total lines
 set statusline +=%4v\ %* "virtual column number
 set statusline +=0x%04B\ %* "character under cursor
+
+" Setting selected text color
+hi Visual term=reverse cterm=reverse guibg=Grey
