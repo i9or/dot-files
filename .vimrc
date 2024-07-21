@@ -24,6 +24,7 @@ set tabstop=4
 set nocompatible
 filetype plugin on
 filetype indent on
+syntax enable
 
 set encoding=utf-8
 set wildmenu
@@ -31,9 +32,11 @@ set ruler
 set laststatus=2
 set colorcolumn=80
 
-if has('termguicolors')
-  set termguicolors
-endif
+set termguicolors
+
+set background=dark
+colorscheme sorbet
+set guifont=Menlo:h16
 
 set title
 set showcmd
@@ -61,7 +64,7 @@ set statusline=
 set statusline +=\ %n\ %* "buffer number
 set statusline +=%{&ff}%* "file format
 set statusline +=%y%* "file type
-set statusline +=\ %<%F%* "full path
+set statusline +=\ %<%f%* "full path
 set statusline +=%m%* "modified flag
 set statusline +=%=%5l%* "current line
 set statusline +=/%L%* "total lines
