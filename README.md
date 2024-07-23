@@ -22,4 +22,4 @@ git rebase -i --rebase-merges --root --exec 'GIT_COMMITTER_DATE="$(git log -n 1 
 
 ## Attributions
 
-N/A
+* Terminal.app theme is a modified Iceberg theme by https://github.com/cocopon/iceberg.vim
