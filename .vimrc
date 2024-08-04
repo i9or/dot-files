@@ -44,7 +44,6 @@ set showcmd
 set tabstop=2 shiftwidth=2
 set backspace=indent,eol,start
 set autoindent
-set expandtab
 
 set guioptions-=m
 set guioptions-=T
@@ -61,10 +60,12 @@ noremap <C-l> <C-w><C-l>
 noremap <C-j> <C-w><C-j>
 noremap <C-k> <C-w><C-k>
 
-noremap <silent> <C-S-Left> :vertical resize +1<CR>
-noremap <silent> <C-S-Right> :vertical resize -1<CR>
+noremap <silent> <C-S-Up> :vertical resize +1<CR>
+noremap <silent> <C-S-Down> :vertical resize -1<CR>
 
 nnoremap <Leader>e :Explore<CR>
+
+imap jk <Esc>
 
 set backupdir=/tmp//
 set undodir=/tmp//
