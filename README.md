@@ -3,7 +3,6 @@
 ## Description
 
 * `starship.toml` contains [Starship](https://starship.rs/) prompt configuration. Should be put to `~/.config/` folder.
-* `nvim` contains [Neovim](https://neovim.io/) configuration, written in Lua. Should be copied to `~/.config/` folder. Additional manual setup is needed for [Packer](https://github.com/wbthomason/packer.nvim#quickstart) plugin.
 <!-- TODO: add the rest of configurations descriptions -->
 
 ## Setting up macOS
