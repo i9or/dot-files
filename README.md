@@ -8,7 +8,7 @@
 ## Setting up macOS
 
 ```sh
-brew install ansible awscli cmake curl fd git go htop llvm neovim pinentry-mac ripgrep sqlite starship terraform tree wget
+brew install ansible awscli cmake curl fd git go htop llvm pinentry-mac ripgrep sqlite starship terraform tree wget macvim
 ```
 
 ## Useful one-lines
