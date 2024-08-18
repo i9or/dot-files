@@ -27,6 +27,7 @@ filetype indent on
 syntax enable
 
 set encoding=utf-8
+set path+=**
 set wildmenu
 set ruler
 set laststatus=2
