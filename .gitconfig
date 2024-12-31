@@ -3,10 +3,8 @@
 [user]
 	email = dont@bzzr.me
 	name = Igor
-	signingKey = xxxxxxxxxxxxxxxx
 [core]
-	editor = vi
-	excludesfile = /Users/igor/.global_gitignore
+	editor = vim
 [push]
 	default = simple
 [alias]
@@ -30,11 +28,5 @@
 	smudge = git-lfs smudge --skip -- %f
 	process = git-lfs filter-process --skip
 	required = true
-[commit]
-	gpgSign = true
 [pull]
 	rebase = false
-[init]
-	defaultBranch = main
-[gpg]
-	program = /opt/homebrew/bin/gpg

@@ -37,7 +37,7 @@ set termguicolors
 
 set background=dark
 colorscheme sorbet
-set guifont=Menlo:h16
+set guifont=Cascadia_Code:h14
 set mouse=a
 
 set title
@@ -68,8 +68,8 @@ nnoremap <Leader>e :Explore<CR>
 
 imap jk <Esc>
 
-set backupdir=/tmp//
-set undodir=/tmp//
+set backupdir=~/.vim/.backup/
+set undodir=~/.vim/.undo/
 set noswapfile
 
 set statusline=
