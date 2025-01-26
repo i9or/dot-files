@@ -2,7 +2,7 @@
 	ui = true
 [user]
 	email = dont@bzzr.me
-	name = Igor
+	name = Igor Pelekhan
 [core]
 	editor = vim
 [push]

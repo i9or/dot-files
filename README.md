@@ -7,8 +7,16 @@
 
 ## Setting up macOS
 
+Create Vim directories:
+
 ```sh
-brew install ansible awscli cmake curl fd git go htop llvm pinentry-mac ripgrep sqlite starship terraform tree wget macvim
+mkdir ~/.vim/{.backup,.undo}
+```
+
+Install Brew packages, from the `dot-file` root directory:
+
+```sh
+brew bundle
 ```
 
 ## Useful one-lines
