@@ -7,8 +7,24 @@
 
 ## Setting up macOS
 
+Install packages:
+
 ```sh
 brew install ansible awscli cmake curl fd git go htop llvm pinentry-mac ripgrep sqlite starship terraform tree wget macvim
+```
+
+Setup Git:
+
+```sh
+./setup-git-macos.sh
+```
+
+## Setting up Windows
+
+Setup Git:
+
+```powershell
+.\setup-git-windows.ps1
 ```
 
 ## Useful one-lines
