@@ -5,9 +5,15 @@ let maplocalleader=" "
 
 set number
 set relativenumber
-set mouse="a"
+set mouse=a
 set noshowmode
-set clipboard="unnamedplus"
+
+if has('win32') || has('win64')
+  set clipboard=unnamed
+else
+  set clipboard=unnamedplus
+endif
+
 set breakindent
 set undofile
 set ignorecase
@@ -147,7 +153,7 @@ let g:netrw_preview=1
 let g:netrw_special_syntax=1
 let g:netrw_sizestyle="H"
 
-highlight! link netrwDir Added
+highlight! link netrwDir Special
 highlight! link netrwExe DiffChange
 highlight! link netrwSymLink Search
 highlight! link netrwCompress WarningMsg
