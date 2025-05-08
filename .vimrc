@@ -97,6 +97,8 @@ nnoremap [e :m .-2<CR>==
 vnoremap [e :m '<-2<CR>gv=gv
 vnoremap ]e :m '>+1<CR>gv=gv
 
+nnoremap <leader>f :find *
+
 imap jk <Esc>
 
 set backupdir=~/.vim/.backup/
