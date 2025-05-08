@@ -35,7 +35,13 @@ filetype indent on
 syntax enable
 
 set encoding=utf-8
-set path+=**
+
+set path-=.
+set path+=.,**
+set path-=*/build/**
+set path-=*/bin/**
+set path-=*/obj/**
+
 set wildmenu
 set ruler
 set laststatus=2
@@ -66,7 +72,7 @@ set guioptions-=r
 set guioptions-=L
 
 set wildmode=list:longest,full
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*.obj,.git,node_modules
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*.obj,.git,node_module,builds
 
 set incsearch
 set hlsearch
