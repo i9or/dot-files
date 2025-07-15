@@ -8,7 +8,7 @@ PLATFORM_CONFIG="$HOME/.gitconfig-platform"
 echo "Copying .gitconfig to $HOME..."
 cp "$CONFIG_SOURCE" "$CONFIG_DEST"
 
-echo "Creating macOS-specific Git configuration..."
+echo "Creating Unix-like-specific Git configuration..."
 cat > "$PLATFORM_CONFIG" << EOF
 [core]
 	autocrlf = input
