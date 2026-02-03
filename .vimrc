@@ -1,40 +1,57 @@
 packadd! matchit
 
+" Space as leader key
 let mapleader=" "
 let maplocalleader=" "
 
-set number
-set relativenumber
-set mouse=a
-set noshowmode
-
-if has('win32') || has('win64')
-  set clipboard=unnamed
-else
-  set clipboard=unnamedplus
-endif
-
-set breakindent
-set undofile
-set ignorecase
-set smartcase
-set updatetime=250
-set timeoutlen=300
-set scrolloff=5
-set showmatch
-set splitright
-set splitbelow
-set list
-set listchars=lead:\ ,trail:·,nbsp:◇,tab:→\ ,extends:▸,precedes:◂,leadmultispace:\│\ ,
-set hlsearch
-set tabstop=4
-
 set nocompatible
+syntax enable
 filetype plugin on
 filetype indent on
-syntax enable
 
 set encoding=utf-8
+
+set number
+set relativenumber
+set wildmenu
+set wildmode=list:longest,full
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*.obj,.git,node_module,build
+set showmatch
+set ruler
+set colorcolumn=80
+
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+set guioptions-=L
+
+if has('gui_running')
+  set guifont=JetBrainsMono-Regular:h16
+endif
+
+set mouse=a
+set clipboard=unnamed,unnamedplus
+set breakindent
+
+set hidden
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+
+set ignorecase
+set smartcase
+
+set signcolumn=yes
+
+set updatetime=250
+set timeoutlen=300
+
+set splitright
+set splitbelow
+
+set cursorline
+set scrolloff=10
 
 set path-=.
 set path+=.,**
@@ -42,126 +59,115 @@ set path-=*/build/**
 set path-=*/bin/**
 set path-=*/obj/**
 
-set wildmenu
-set ruler
-set laststatus=2
-set colorcolumn=80
-
-set termguicolors
-
-set background=dark
-colorscheme sorbet
-
-if has('gui_running')
-	if has('gui_macvim')
-		set guifont=Menlo:h16 
-	elseif has('gui_win32')
-		set guifont=Cascadia_Code:h12
-	endif
-endif
-
-set title
-set showcmd
-set tabstop=2 shiftwidth=2
-set backspace=indent,eol,start
-set autoindent
-
-set guioptions-=m
-set guioptions-=T
-set guioptions-=r
-set guioptions-=L
-
-set wildmode=list:longest,full
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*.obj,.git,node_module,builds
-
 set incsearch
 set hlsearch
-
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-
-noremap <C-h> <C-w><C-h>
-noremap <C-l> <C-w><C-l>
-noremap <C-j> <C-w><C-j>
-noremap <C-k> <C-w><C-k>
-
-noremap <silent> <C-S-Up> :vertical resize +1<CR>
-noremap <silent> <C-S-Down> :vertical resize -1<CR>
-
-nnoremap <Leader>/ :nohlsearch<CR>
+nnoremap <leader>h :nohlsearch<CR>
 nnoremap <silent> <Esc><Esc> :let @/ = ""<CR>:nohlsearch<CR>
 
-vnoremap > >gv
+set list
+set listchars=lead:\ ,trail:·,nbsp:◇,tab:→\ ,extends:▸,precedes:◂,leadmultispace:\│\ ,
+
+if has('termguicolors')
+  set termguicolors
+endif
+
+"==============================================================================
+" Plugins
+"==============================================================================
+
+" Plugin Management (vim-plug)
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-sleuth', { 'tag': 'v2.0' }
+Plug 'tpope/vim-commentary', { 'commit': '64a654ef4a20db1727938338310209b6a63f60c9' }
+Plug 'airblade/vim-gitgutter', { 'commit': '0acb772e76064cc406664ab595b58b3fac76488a' }
+Plug 'junegunn/fzf', { 'tag': 'v0.67.0', 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim', { 'commit': '34a564c81f36047f50e593c1656f4580ff75ccca' }
+Plug 'sainnhe/everforest', { 'commit': 'b03a03148c8b34c24c96960b93da9c8883d11f54' }
+Plug 'sheerun/vim-polyglot', { 'commit': 'f061eddb7cdcc614c8406847b2bfb53099832a4e' }
+Plug 'vim-airline/vim-airline', { 'commit': 'b03fdc542f5155b54959102a2aecaf6c792dce01' }
+Plug 'preservim/nerdtree', { 'tag': '7.1.3' }
+
+call plug#end()
+
+" Everforest theme
+set background=dark
+let g:everforest_background='hard'
+let g:everforest_better_performance=1
+colorscheme everforest
+
+" Airline
+let g:airline_theme='everforest'
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled=1
+
+" FZF
+nnoremap <leader>sf :Files<CR>
+nnoremap <leader>sg :Rg<CR>
+nnoremap <leader>sb :Buffers<CR>
+nnoremap <leader>sh :Helptags<CR>
+nnoremap <leader>/ :BLines<CR>
+
+" NERDTree
+nnoremap <leader>e :NERDTreeToggle<CR>
+nnoremap <leader>E :NERDTreeFind<CR>
+let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen=0
+
+" vim-gitgutter
+set updatetime=100
+let g:gitgutter_sign_added='+'
+let g:gitgutter_sign_modified='~'
+let g:gitgutter_sign_removed='-'
+
+"==============================================================================
+" Keymaps
+"==============================================================================
+
+" Diagnostics
+nnoremap [d :lprev<CR>
+nnoremap ]d :lnext<CR>
+nnoremap <leader>q :lopen<CR>
+
+" Better window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Resize with arrows
+nnoremap <C-S-Up> :resize +2<CR>
+nnoremap <C-S-Down> :resize -2<CR>
+nnoremap <C-S-Left> :vertical resize -2<CR>
+nnoremap <C-S-Right> :vertical resize +2<CR>
+
+" Buffer navigation
+nnoremap <leader>bn :bnext<CR>
+nnoremap <leader>bp :bprevious<CR>
+nnoremap <leader>bd :bdelete<CR>
+
+" Stay in indent mode
 vnoremap < <gv
+vnoremap > >gv
 
-nnoremap <Leader>b :ls<CR>:b<Space>
-
-nnoremap ]e :m .+1<CR>==
-nnoremap [e :m .-2<CR>==
-vnoremap [e :m '<-2<CR>gv=gv
-vnoremap ]e :m '>+1<CR>gv=gv
-
-nnoremap <leader>f :find *
+" Move text up and down
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 imap jk <Esc>
 
-set backupdir=~/.vim/.backup/
-set undodir=~/.vim/.undo/
-set noswapfile
+"==============================================================================
+" Autocommands
+"==============================================================================
 
-set noshowmode
-
-let mode_map = {
-	\ 'n': ['NORMAL', 'CursorIM'],
-	\ 'i': ['INSERT', 'DiffChange'],
-	\ 'R': ['REPLACE', 'DiffDelete'],
-	\ 'v': ['VISUAL', 'Visual'],
-	\ 'V': ['V-LINE', 'Visual'],
-	\ "\<C-v>": ['V-BLOCK', 'Visual'],
-	\ 'c': ['COMMAND', 'DiffText'],
-	\ 's': ['SELECT', 'IncSearch'],
-	\ 'S': ['S-LINE', 'IncSearch'],
-	\ "\<C-s>": ['S-BLOCK', 'IncSearch'],
-	\ 't': ['TERMINAL', 'Question'],
-	\ }
-
-highlight! link StatusLine StatusLineNC
-
-function! ModeStatusLine()
-	let l:mode = mode()
-	let l:mode_info = get(g:mode_map, l:mode, ['???', 'Normal'])
-
-	return '%#' . l:mode_info[1] . '#' . ' ' . l:mode_info[0] . ' %#StatusLine#'
-endfunction
-
-set statusline=
-set statusline +=%(%{%ModeStatusLine()%}%)\   " show current mode
-set statusline +=\ %n\                        " buffer number
-set statusline +=%{&ff}                       " file format
-set statusline +=%y                           " file type
-set statusline +=\ %<%f                       " full path
-set statusline +=%m                           " modified flag
-set statusline +=%=                           " right side
-set statusline +=%p%%\                        " total lines
-set statusline +=%4v\                         " virtual column number
-set statusline +=0x%04B\                      " character under cursor
-
-" Tweaks for file browsing
-let g:netrw_banner=0                          " disable banner
-let g:netrw_liststyle=3                       " tree view
-let g:netrw_browse_split=4                    " open in previous window
-let g:netrw_altv=1                            " split to the right
-let g:netrw_winsize=33                        " width 33%
-
-nnoremap <Leader>e :Lexplore<CR>
-
-let g:netrw_preview=1
-let g:netrw_special_syntax=1
-let g:netrw_sizestyle="H"
-
-highlight! link netrwDir Special
-highlight! link netrwExe DiffChange
-highlight! link netrwSymLink Search
-highlight! link netrwCompress WarningMsg
+" Remove trailing whitespace on save
+augroup remove_whitespace
+  autocmd!
+  autocmd BufWritePre * :%s/\s\+$//e
+augroup END
