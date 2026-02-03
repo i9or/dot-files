@@ -10,7 +10,7 @@
 Install packages:
 
 ```sh
-sudo apt-get install build-essential curl wget cmake git vim sqlite3 tree vim-gtk3
+sudo apt-get install build-essential curl wget cmake git vim sqlite3 tree vim-gtk3 fonts-jetbrains-mono
 ```
 
 Setup Git:
