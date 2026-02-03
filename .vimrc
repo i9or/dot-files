@@ -27,7 +27,7 @@ set guioptions-=L
 
 if has('gui_running')
   if has('mac')
-    set guifont=JetBrainsMono-Regular:h16
+    set guifont=JetBrainsMonoNFM-Regular:h16
   else
     set guifont=JetBrains\ Mono\ Regular\ 10
   endif
@@ -97,6 +97,8 @@ Plug 'sainnhe/everforest', { 'commit': 'b03a03148c8b34c24c96960b93da9c8883d11f54
 Plug 'sheerun/vim-polyglot', { 'commit': 'f061eddb7cdcc614c8406847b2bfb53099832a4e' }
 Plug 'vim-airline/vim-airline', { 'commit': 'b03fdc542f5155b54959102a2aecaf6c792dce01' }
 Plug 'preservim/nerdtree', { 'tag': '7.1.3' }
+
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
