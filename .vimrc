@@ -26,7 +26,11 @@ set guioptions-=r
 set guioptions-=L
 
 if has('gui_running')
-  set guifont=JetBrainsMono-Regular:h16
+  if has('mac')
+    set guifont=JetBrainsMono-Regular:h16
+  else
+    set guifont=JetBrains\ Mono\ Regular\ 10
+  endif
 endif
 
 set mouse=a
@@ -106,6 +110,10 @@ colorscheme everforest
 let g:airline_theme='everforest'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.colnr = ' ㏇:'
 
 " FZF
 nnoremap <leader>sf :Files<CR>
